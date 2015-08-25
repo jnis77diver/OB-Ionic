@@ -1,0 +1,7 @@
+.idea
+.git
+hooks
+node_modules
+resources
+platforms
+plugins
