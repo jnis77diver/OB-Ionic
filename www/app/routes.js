@@ -14,13 +14,13 @@ angular
 
       .state('login', {
         url: '/login',
-        templateUrl: 'templates/login.html',
+        templateUrl: 'app/login/login.html',
         controller: 'LoginCtrl as vm'
       })
       .state('tab', {
         url: '/tab',
         abstract: true,
-        templateUrl: 'templates/tabs.html',
+        templateUrl: 'app/core/tabs.html',
         data: {
           authenticationNeeded: true
         }
@@ -29,7 +29,7 @@ angular
         url: '/home',
         views: {
           'tab-home': {
-            templateUrl: 'templates/tab-home.html',
+            templateUrl: 'app/home/tab-home.html',
             controller: 'HomeCtrl as home'
           }
         }
@@ -38,7 +38,7 @@ angular
         url: '/search',
         views: {
           'tab-search': {
-            templateUrl: 'templates/tab-search.html',
+            templateUrl: 'app/search/tab-search.html',
             controller: 'SearchCtrl as search'
           }
         }
@@ -47,7 +47,7 @@ angular
         url: '/results',
         views: {
           'tab-search': {
-            templateUrl: 'templates/tab-search-results.html',
+            templateUrl: 'app/results/tab-search-results.html',
             controller: 'SearchResultsCtrl as sr'
           }
         }
@@ -56,7 +56,7 @@ angular
         url: '/results/:resultId',
         views: {
           'tab-search': {
-            templateUrl: 'templates/tab-search-result-details.html',
+            templateUrl: 'app/results/tab-search-result-details.html',
             controller: 'SearchResultDetailsCtrl as srd'
           }
         }
@@ -65,7 +65,7 @@ angular
         url: '/account',
         views: {
           'tab-account': {
-            templateUrl: 'templates/tab-account.html',
+            templateUrl: 'app/account/tab-account.html',
             controller: 'AccountCtrl as vm'
           }
         }
