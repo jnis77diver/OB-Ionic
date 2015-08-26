@@ -19,7 +19,7 @@
     function logout(){
       authService.logout();
       $state.go('login'); 
-    };
+    }
   }
 
 })();

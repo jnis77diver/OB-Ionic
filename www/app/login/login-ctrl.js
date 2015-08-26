@@ -29,7 +29,7 @@
         if(authService.isAuthenticated()){
           $ionicLoading.hide();
           vm.user={};
-          $state.go('tab.home');
+          $state.go('menu.tabs.home');
         }else{
           $ionicLoading.hide();
             vm.user.password = "";
@@ -48,7 +48,7 @@
 
     function activate() {
       if(authService.isAuthenticated()){
-        $state.go('tab.home');
+        $state.go('menu.tabs.home');
       }
     }
   }
