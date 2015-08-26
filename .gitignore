@@ -2,6 +2,7 @@
 .git
 hooks
 node_modules
+bower_components
 resources
 platforms
 plugins

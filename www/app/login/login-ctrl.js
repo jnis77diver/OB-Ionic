@@ -29,7 +29,7 @@
         if(authService.isAuthenticated()){
           $ionicLoading.hide();
           vm.user={};
-          $state.go('tab.dash');
+          $state.go('tab.home');
         }else{
           $ionicLoading.hide();
             vm.user.password = "";
