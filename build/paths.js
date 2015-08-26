@@ -15,7 +15,7 @@ module.exports = function() {
     vendorjs: appRoot + 'vendor/js/',
     appcss: appRoot + 'css/',
     source: appRoot + 'app/**/*.js',
-    html:   appRoot + 'templates/**/*.html',
+    html:   appRoot + 'app/**/*.html',
     style:  appRoot + 'css/**/*.css',
     lib:    appRoot + 'lib/',
     sass: ['./scss/**/*.scss']
