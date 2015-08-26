@@ -5,47 +5,24 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/ionic.app.css" rel="stylesheet">
-    <link href="lib/ionicons/css/ionicons.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+
 
     <style>
       .navy { background-color: #27375F;}
       .orange { background-color: #EE7421;}
     </style>
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/css/ionicons.css"/>
+    <link rel="stylesheet" href="vendor/css/ionic.css"/>
+    <!-- endbower -->
 
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="lib/api-check/dist/api-check.js"></script>
-    <script src="lib/angular-formly/dist/formly.js"></script>
-    <script src="lib/angular-formly-templates-ionic/dist/angular-formly-templates-ionic.js"></script>
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/ionic.app.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- endinject -->
 
-    <script src="lib/underscore/underscore.js"></script>
-
-    <!-- your app's js -->
-    <script src="app/app.js"></script>
-    <script src="app/routes.js"></script>
-    <script src="app/constants.js"></script>
-    <script src="app/factories/authInterceptor.js"></script>
-    <script src="app/services/authService.js"></script>
-    <script src="app/services/dataService.js"></script>
-    <script src="app/services/userService.js"></script>
-     
-    <script src="app/obapp.config.js"></script>
-    <script src="app/login/login-ctrl.js"></script>
-    <script src="app/home/dash-ctrl.js"></script>
-    <script src="app/search/search-ctrl.js"></script>
-    <script src="app/results/searchResults-ctrl.js"></script>
-    <script src="app/results/searchResultDetails-ctrl.js"></script>
-    <script src="app/account/account-ctrl.js"></script>
 
   </head>
   <body ng-app="OBApp">
@@ -63,5 +40,41 @@
       have templates inline in this html file if you'd like).
     -->
     <ion-nav-view></ion-nav-view>
+
+
+    <!-- bower:js -->
+    <script src="vendor/js/underscore.js"></script>
+    <script src="vendor/js/api-check.js"></script>
+    <script src="vendor/js/angular.js"></script>
+    <script src="vendor/js/formly.js"></script>
+    <script src="vendor/js/angular-formly-templates-ionic.js"></script>
+    <script src="vendor/js/angular-animate.js"></script>
+    <script src="vendor/js/angular-sanitize.js"></script>
+    <script src="vendor/js/angular-ui-router.js"></script>
+    <script src="vendor/js/ionic.js"></script>
+    <script src="vendor/js/ionic-angular.js"></script>
+    <!-- endbower -->
+
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+
+    <!-- inject:js -->
+    <script src="app/app.js"></script>
+    <script src="app/account/account-ctrl.js"></script>
+    <script src="app/constants.js"></script>
+    <script src="app/factories/authInterceptor.js"></script>
+    <script src="app/home/home-ctrl.js"></script>
+    <script src="app/login/login-ctrl.js"></script>
+    <script src="app/obapp.config.js"></script>
+    <script src="app/results/searchResultDetails-ctrl.js"></script>
+    <script src="app/results/searchResults-ctrl.js"></script>
+    <script src="app/routes.js"></script>
+    <script src="app/search/search-ctrl.js"></script>
+    <script src="app/services/authService.js"></script>
+    <script src="app/services/dataService.js"></script>
+    <script src="app/services/userService.js"></script>
+    <!-- endinject -->
   </body>
 </html>

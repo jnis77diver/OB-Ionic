@@ -1,4 +1,12 @@
 {
   "name": "OB-POC-Ionic",
-  "app_id": "f707653a"
+  "app_id": "f707653a",
+  "gulpStartupTasks": [
+    "index",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/vendor/**/*"
+  ]
 }
