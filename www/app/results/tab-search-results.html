@@ -26,52 +26,46 @@
         width: 19% !important;
         height: 85px !important;
     }
-
 </style>
 
 <ion-view view-title="Results">
-
-    <ion-content scroll="false" ng-show="isLoading">
+    <ion-content scroll="false" ng-show="vm.isLoading">
         <div class="spinner">
             <ion-spinner></ion-spinner>
         </div>
     </ion-content>
-
-    <ion-content scroll="true" ng-hide="isLoading">
-
-        <ion-list>
-            <div ng-repeat="group in data.products">
-
-                <ion-item class="item-stable"
-                          ng-click="toggleGroup(group)"
-                          ng-class="{active: isGroupShown(group)}">
-                    <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-                    &nbsp;
-                    {{group.group}}&nbsp;({{group.products.length + 1}})
-                </ion-item>
-
-                <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-
-                    <div class="item item-light col-header item-icon-right">
-                        <div class="flex-container wrap">
-                            <div ng-repeat="column in data.columns" ng-click="sortBy(column.id)">
-                                <div class="column">{{column.name}}&nbsp;</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item col-detail item-icon-right"
-                         ng-repeat="item in group.products" ui-sref="tab.result-detail({resultId: item.id})">
-                        <div class="flex-container wrap">
-                            <div ng-repeat="column in data.columns">
-                                <div class="column">{{item[column.id]}}&nbsp;</div>
-                            </div>
-                        </div>
-                        <i class="icon ion-chevron-right icon-accessory"></i>
-                    </div>
-                </ion-item>
-            </div>
-
-        </ion-list>
-    </ion-content>
+    <ion-content scroll="true" ng-hide="vm.isLoading">
+      <div class="padding">
+        <button class="button button-block button-royal" ng-click="vm.sendEmail()">Email Results</button>
+      </div>
+      <ion-list>
+          <div ng-repeat="group in vm.data.products">
+              <ion-item class="item-stable"
+                        ng-click="vm.toggleGroup(group)"
+                        ng-class="{active: vm.isGroupShown(group)}">
+                  <i class="icon" ng-class="vm.isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+                  &nbsp;
+                  {{group.group}}&nbsp;({{group.products.length + 1}})
+              </ion-item>
+              <ion-item class="item-accordion" ng-show="vm.isGroupShown(group)">
+                  <div class="item item-light col-header item-icon-right">
+                      <div class="flex-container wrap">
+                          <div ng-repeat="column in vm.data.columns" ng-click="vm.sortBy(column.id)">
+                              <div class="column">{{column.name}}&nbsp;</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="item col-detail item-icon-right"
+                        ng-repeat="item in group.products" ui-sref="tab.result-detail({resultId: item.id})">
+                      <div class="flex-container wrap">
+                          <div ng-repeat="column in vm.data.columns">
+                              <div class="column">{{item[column.id]}}&nbsp;</div>
+                          </div>
+                      </div>
+                      <i class="icon ion-chevron-right icon-accessory"></i>
+                  </div>
+              </ion-item>
+          </div>
+      </ion-list>
+  </ion-content>
 </ion-view>

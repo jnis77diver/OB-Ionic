@@ -38,9 +38,9 @@
             <!--</div>-->
         <!--</ion-list>-->
         <form name="searchForm" novalidate>
-            <formly-form model="formData" fields="formFields" form="form" options="options">
+            <formly-form model="formData" fields="vm.formFields" form="form" options="options">
                 <div class="padding">
-                    <button class="button button-block button-royal" ng-click="search()">Submit</button>
+                    <button class="button button-block button-royal" ng-click="vm.search()">Search</button>
                 </div>
             </formly-form>
         </form>
