@@ -5,7 +5,7 @@
     .module('OBApp')
     .factory('dataService', dataService);
 
-  dataService.$inject = [''];
+  //dataService.$inject = [''];
 
   /* @ngInject */
   function dataService() {

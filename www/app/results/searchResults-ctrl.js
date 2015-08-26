@@ -5,10 +5,10 @@
     .module('OBApp')
     .controller('SearchResultsCtrl', SearchResultsCtrl);
 
-  SearchResultsCtrl.$inject = ['$timeout', 'dataService'];
+  SearchResultsCtrl.$inject = ['$timeout','$cordovaEmailComposer', 'mailService', 'dataService'];
 
   /* @ngInject */
-  function SearchResultsCtrl($timeout, dataService) {
+  function SearchResultsCtrl($timeout,$cordovaEmailComposer, mailService, dataService) {
     /* jshint validthis: true */
     var vm = this;
 
@@ -17,7 +17,11 @@
 
     vm.data = {};
     vm.isLoading = true;
-
+    
+    vm.sendEmail = sendEmail;
+    vm.toggleGroup = toggleGroup;
+    vm.isGroupShown = isGroupShown;
+    
     $timeout(function () {
       vm.isLoading = false;
     }, 1000);
@@ -34,17 +38,36 @@
     var products = dataService.getProducts();
     vm.data.products = products;
 
-    vm.toggleGroup = function(group) {
+    function toggleGroup(group) {
       if (vm.isGroupShown(group)) {
         vm.shownGroup = null;
       } else {
         vm.shownGroup = group;
       }
-    };
-    vm.isGroupShown = function(group) {
+    }
+    
+    function isGroupShown(group) {
       return vm.shownGroup === group;
+    }
+    
+    function sendEmail() {
+      var emailTemplate = mailService.getResultsMailTemplate();
+      
+      $cordovaEmailComposer.isAvailable().then(function() {
+        var email = {
+          subject: 'Sample Optimal Blue Email',
+          body: emailTemplate,
+          isHtml: true
+        };
+      
+        $cordovaEmailComposer.open(email).then(null, function () {
+          console.log("User Cancelled...");
+        });
+      }, function () {
+        console.log("Email Composer is not available");
+      });
     };
-
+    
     activate();
 
     ////////////////

@@ -41,6 +41,16 @@
         
       });
     }
+    
+    activate();
+
+    ////////////////
+
+    function activate() {
+      if(authService.isAuthenticated()){
+        $state.go('tab.home');
+      }
+    }
   }
 
 })();

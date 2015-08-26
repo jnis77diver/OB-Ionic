@@ -5,18 +5,21 @@
     .module('OBApp')
     .controller('SearchCtrl', SearchCtrl);
 
-  SearchCtrl.$inject = ['$state'];
+  SearchCtrl.$inject = ['$state', '$cordovaEmailComposer','$cordovaContacts','mailService'];
 
   /* @ngInject */
-  function SearchCtrl($state) {
+  function SearchCtrl($state, $cordovaEmailComposer,$cordovaContacts, mailService) {
     /* jshint validthis: true */
     var vm = this;
 
     vm.activate = activate;
     vm.title = '';
-
+    vm.contact = {};
+    
     vm.showError = true;
-
+    vm.logForm = logForm;
+    vm.search = search;
+    
     vm.formFields = [
       {
         key: 'occupancy',
@@ -137,14 +140,14 @@
       }];
     vm.formData = {};
 
-    vm.logForm = function(data){
+    function logForm(data){
       console.warn(data);
     };
 
-    vm.search = function () {
+    function search(){
       $state.go('tab.results');
-    };
-
+    }
+    
     activate();
 
     ////////////////

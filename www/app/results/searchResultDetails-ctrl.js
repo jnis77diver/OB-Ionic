@@ -5,7 +5,7 @@
     .module('OBApp')
     .controller('SearchResultDetailsCtrl', SearchResultDetailsCtrl);
 
-  SearchResultDetailsCtrl.$inject = [''];
+  //SearchResultDetailsCtrl.$inject = [''];
 
   /* @ngInject */
   function SearchResultDetailsCtrl() {
