@@ -21,8 +21,8 @@ angular.module('OBApp', [
       }
     });
   })
-  .run(function ($rootScope, $state, authService) {
-  $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
+  .run(function ($rootScope, $state, $ionicHistory, authService) {
+  $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
     if ('data' in next && 'authenticationNeeded' in next.data) {
       if (!authService.isAuthenticated()) {
         if (next.name !== 'login') {
@@ -32,4 +32,6 @@ angular.module('OBApp', [
       }
     }
   });
+
+
 });

@@ -29,6 +29,10 @@
 </style>
 
 <ion-view view-title="Results">
+    <ion-nav-buttons side="left">
+        <button class="button" ng-click="$ionicGoBack()"><i class="ion-arrow-left-c"></i> Back</button>
+    </ion-nav-buttons>
+
     <ion-content scroll="false" ng-show="vm.isLoading">
         <div class="spinner">
             <ion-spinner></ion-spinner>
