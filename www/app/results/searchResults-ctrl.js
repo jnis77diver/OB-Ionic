@@ -51,22 +51,8 @@
     }
     
     function sendEmail() {
-      var emailTemplate = mailService.getResultsMailTemplate(vm.data);
-
-      $cordovaEmailComposer.isAvailable().then(function() {
-        var email = {
-          subject: 'Optimal Blue Search Results',
-          body: emailTemplate,
-          isHtml: true
-        };
-      
-        $cordovaEmailComposer.open(email).then(null, function () {
-          console.log("User Cancelled...");
-        });
-      }, function () {
-        console.log("Email Composer is not available");
-      });
-    };
+      mailService.sendSearchResultsEmail(vm.data);
+    }
     
     activate();
 
