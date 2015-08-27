@@ -51,11 +51,11 @@
     }
     
     function sendEmail() {
-      var emailTemplate = mailService.getResultsMailTemplate();
-      
+      var emailTemplate = mailService.getResultsMailTemplate(vm.data);
+
       $cordovaEmailComposer.isAvailable().then(function() {
         var email = {
-          subject: 'Sample Optimal Blue Email',
+          subject: 'Optimal Blue Search Results',
           body: emailTemplate,
           isHtml: true
         };
