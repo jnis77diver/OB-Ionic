@@ -13,16 +13,23 @@ angular
     $stateProvider
 
       .state('login', {
+        cache: false,
         url: '/login',
         templateUrl: 'app/login/login.html',
         controller: 'LoginCtrl as vm'
       })
       .state('logout', {
+        cache: false,
         url: 'logout',
         controller: function($state, authService){
           authService.logout();
           $state.go('login');
         }
+      })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'app/register/register.html',
+        controller: 'RegisterCtrl as vm'
       })
       .state('menu', {
         abstract: true,
@@ -61,7 +68,7 @@ angular
       .state('menu.tabs.results', {
         url: '/results',
         views: {
-          'main': {
+          'search-tab': {
             templateUrl: 'app/results/tab-search-results.html',
             controller: 'SearchResultsCtrl as vm'
           }

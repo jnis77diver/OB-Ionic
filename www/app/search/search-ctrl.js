@@ -145,7 +145,7 @@
     };
 
     function search(){
-      $state.go('tab.results');
+      $state.go('menu.tabs.results');
     }
     
     activate();

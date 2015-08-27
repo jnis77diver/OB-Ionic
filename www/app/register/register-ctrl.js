@@ -3,30 +3,30 @@
 
   angular
     .module('OBApp')
-    .controller('LoginCtrl', LoginCtrl);
+    .controller('RegisterCtrl', RegisterCtrl);
 
-  LoginCtrl.$inject = ['$state','$ionicLoading', '$ionicPopup', 'userService', 'authService'];
+  RegisterCtrl.$inject = ['$state','$ionicLoading', '$ionicPopup', 'userService', 'authService'];
 
   /* @ngInject */
-  function LoginCtrl($state, $ionicLoading,$ionicPopup, userService, authService) {
+  function RegisterCtrl($state, $ionicLoading,$ionicPopup, userService, authService) {
     /* jshint validthis: true */
     var vm = this;
 
     vm.title = '';
     vm.user = {};
 
-    vm.login = login;
     vm.register = register;
+    vm.backToLogin = backToLogin;
     
-    function login(){
+    function register(){
       $ionicLoading.show({
-          content:'Loading',
-          animation: 'fade-in',
-          showBackdrop: true,
-          showDelay:0
+        content:'Loading',
+        animation: 'fade-in',
+        showBackdrop: true,
+        showDelay:0
       });
       
-      userService.login(vm.user.username, vm.user.password).then(function(){
+      userService.register(vm.user.username, vm.user.password).then(function(){
         if(authService.isAuthenticated()){
           $ionicLoading.hide();
           vm.user={};
@@ -34,16 +34,17 @@
         }else{
           $ionicLoading.hide();
           vm.user.password = "";
+          vm.user.confirmPassword = "";
           var alertPopup = $ionicPopup.alert({
-              title: 'Login failed!',
-              template: 'Please check your credentials!'
+              title: 'Registration failed!',
+              template: 'Please try again!'
           });
-        }
+        } 
       });
     }
     
-    function register(){
-      $state.go('register');
+    function backToLogin(){
+      $state.go('login');
     }
     
     activate();
