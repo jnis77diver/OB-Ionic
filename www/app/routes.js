@@ -37,7 +37,6 @@ angular
         data: {
           authenticationNeeded: true
         }
-
       })
       .state('menu.tabs', {
         abstract: true,
@@ -91,7 +90,26 @@ angular
             controller: 'AccountCtrl as vm'
           }
         }
+      })
+      .state('menu.tabs.email-mobile-url', {
+        url: '/email-mobile-url',
+        views: {
+          'email-mobile-url': {
+            templateUrl: '',
+            controller: ''
+          }
+        }
+      })
+      .state('menu.tabs.email-home-url', {
+        url: '/email-home-url',
+        views: {
+          'email-home-url': {
+            templateUrl: '',
+            controller: ''
+          }
+        }
       });
+
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
