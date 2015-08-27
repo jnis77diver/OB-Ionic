@@ -89,7 +89,7 @@
             {
               label: 'Modular',
               value: 'modular'
-            },
+            }
           ],
           valueProp: 'value',
           labelProp: 'label',
@@ -142,10 +142,10 @@
 
     function logForm(data){
       console.warn(data);
-    };
+    }
 
     function search(){
-      $state.go('tab.results');
+      $state.go('menu.tabs.results');
     }
     
     activate();

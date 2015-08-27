@@ -13,58 +13,80 @@ angular
     $stateProvider
 
       .state('login', {
+        cache: false,
         url: '/login',
         templateUrl: 'app/login/login.html',
         controller: 'LoginCtrl as vm'
       })
-      .state('tab', {
-        url: '/tab',
+      .state('logout', {
+        cache: false,
+        url: 'logout',
+        controller: function($state, authService){
+          authService.logout();
+          $state.go('login');
+        }
+      })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'app/register/register.html',
+        controller: 'RegisterCtrl as vm'
+      })
+      .state('menu', {
         abstract: true,
-        templateUrl: 'app/core/tabs.html',
+        templateUrl: 'app/layout/menu-layout.html',
         data: {
           authenticationNeeded: true
         }
+
       })
-      .state('tab.home', {
-        url: '/home',
+      .state('menu.tabs', {
+        abstract: true,
         views: {
-          'tab-home': {
-            templateUrl: 'app/home/tab-home.html',
-            controller: 'HomeCtrl as home'
+          'tabContent': {
+            templateUrl: 'app/core/tabs.html'
           }
         }
       })
-      .state('tab.search', {
+      .state('menu.tabs.home', {
+        url: '/home',
+        views: {
+          'home-tab': {
+            templateUrl: 'app/home/tab-home.html',
+            controller: 'HomeCtrl as vm'
+          }
+        }
+      })
+      .state('menu.tabs.search', {
         url: '/search',
         views: {
-          'tab-search': {
+          'search-tab': {
             templateUrl: 'app/search/tab-search.html',
             controller: 'SearchCtrl as vm'
           }
         }
       })
-      .state('tab.results', {
+      .state('menu.tabs.results', {
         url: '/results',
         views: {
-          'tab-search': {
+          'results-tab': {
             templateUrl: 'app/results/tab-search-results.html',
             controller: 'SearchResultsCtrl as vm'
           }
         }
       })
-      .state('tab.result-detail', {
+      .state('menu.tabs.result-detail', {
         url: '/results/:resultId',
         views: {
-          'tab-search': {
+          'results-detail-tab': {
             templateUrl: 'app/results/tab-search-result-details.html',
             controller: 'SearchResultDetailsCtrl as srd'
           }
         }
       })
-      .state('tab.account', {
-        url: '/account',
+    .state('menu.tabs.profile', {
+        url: '/profile',
         views: {
-          'tab-account': {
+          'profile': {
             templateUrl: 'app/account/tab-account.html',
             controller: 'AccountCtrl as vm'
           }
