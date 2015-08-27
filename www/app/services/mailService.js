@@ -5,14 +5,34 @@
     .module('OBApp')
     .factory('mailService', mailService);
     
-    mailService.$inject = ['_'];
+    mailService.$inject = ['_', '$cordovaEmailComposer'];
     
-    function mailService(_){
+    function mailService(_, $cordovaEmailComposer){
       return {
-        getResultsMailTemplate: getResultsMailTemplate
+        sendSearchResultsEmail: sendSearchResultsEmail,
+        sendMobileUrlEmail: sendMobileUrlEmail,
+        sendHomeUrlEmail: sendHomeUrlEmail
       }
       
-      function getResultsMailTemplate(data){
+      function sendSearchResultsEmail(data){
+        var emailTemplate = getResultHtml(data);
+
+        $cordovaEmailComposer.isAvailable().then(function() {
+          var email = {
+            subject: 'Optimal Blue Search Results',
+            body: emailTemplate,
+            isHtml: true
+          };
+        
+          $cordovaEmailComposer.open(email).then(null, function () {
+            console.log("User Cancelled...");
+          });
+        }, function () {
+          console.log("Email Composer is not available");
+        });
+      }
+      
+      function getResultHtml(data){
         var html = '';
            
         for(var i = 0; i < data.groups.length; i++){
@@ -38,6 +58,38 @@
           html += '</table>';
         }
         return html;
+      }
+      
+      function sendMobileUrlEmail(){
+        $cordovaEmailComposer.isAvailable().then(function() {
+          var email = {
+            subject: 'Optimal Blue Mobile Url',
+            body: '<a href="www.optimalblue.com">Optimal Blue</a>',
+            isHtml: true
+          };
+          
+          $cordovaEmailComposer.open(email).then(null, function () {
+            console.log("User Cancelled...");
+          });
+        }, function () {
+          console.log("Email Composer is not available");
+        });
+      }
+      
+      function sendHomeUrlEmail(){
+        $cordovaEmailComposer.isAvailable().then(function() {
+          var email = {
+            subject: 'Optimal Blue Home Url',
+            body: '<a href="www.optimalblue.com">Optimal Blue</a>',
+            isHtml: true
+          };
+          
+          $cordovaEmailComposer.open(email).then(null, function () {
+            console.log("User Cancelled...");
+          });
+        }, function () {
+          console.log("Email Composer is not available");
+        });
       }
     }
   })();

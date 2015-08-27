@@ -11,7 +11,6 @@ angular
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
     $stateProvider
-
       .state('login', {
         cache: false,
         url: '/login',
@@ -100,22 +99,18 @@ angular
           }
         }
       })
-      .state('menu.tabs.email-mobile-url', {
-        url: '/email-mobile-url',
-        views: {
-          'email-mobile-url': {
-            templateUrl: '',
-            controller: ''
-          }
+      .state('email-mobile-url', {
+        cache: false,
+        controller: function($state, mailService){
+          mailService.sendMobileUrlEmail();
+          $state.go('menu.tabs.home');
         }
       })
-      .state('menu.tabs.email-home-url', {
-        url: '/email-home-url',
-        views: {
-          'email-home-url': {
-            templateUrl: '',
-            controller: ''
-          }
+      .state('email-home-url', {
+        cache: false,
+        controller: function($state, mailService){
+          mailService.sendHomeUrlEmail();
+          $state.go('menu.tabs.home');
         }
       });
 
