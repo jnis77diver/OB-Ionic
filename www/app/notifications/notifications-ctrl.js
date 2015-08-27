@@ -3,32 +3,25 @@
 
   angular
     .module('OBApp')
-    .controller('HomeCtrl', HomeCtrl);
+    .controller('NotificationsCtrl', NotificationsCtrl);
 
-  HomeCtrl.$inject = ['$state'];
+  NotificationsCtrl.$inject = ['$state'];
 
   /* @ngInject */
-  function HomeCtrl($state) {
+  function NotificationsCtrl($state) {
     /* jshint validthis: true */
     var vm = this;
 
     vm.activate = activate;
     vm.title = '';
     
-    vm.showNotifications = showNotifications;
-    
-    function showNotifications(){
-      $state.go('menu.tabs.notifications');
-    }
-    
     activate();
 
     ////////////////
 
     function activate() {
+			
     }
-
-
   }
 
 })();

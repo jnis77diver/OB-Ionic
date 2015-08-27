@@ -99,6 +99,15 @@ angular
           }
         }
       })
+      .state('menu.tabs.notifications', {
+        url: '/notifications',
+        views: {
+          'notifications': {
+            templateUrl: 'app/notifications/notifications.html',
+            controller: 'NotificationsCtrl as vm'
+          }
+        }
+      })
       .state('email-mobile-url', {
         cache: false,
         controller: function($state, mailService){
