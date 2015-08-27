@@ -5,10 +5,11 @@
     .module('OBApp')
     .controller('SearchCtrl', SearchCtrl);
 
-  SearchCtrl.$inject = ['$state', '$cordovaEmailComposer','$cordovaContacts','formService','mailService'];
+  SearchCtrl.$inject = ['$state', '$cordovaEmailComposer','$cordovaContacts', '$ionicNavBarDelegate',
+    'formService','mailService'];
 
   /* @ngInject */
-  function SearchCtrl($state, $cordovaEmailComposer,$cordovaContacts, formService, mailService) {
+  function SearchCtrl($state, $cordovaEmailComposer,$cordovaContacts, $ionicNavBarDelegate, formService, mailService) {
     /* jshint validthis: true */
     var vm = this;
 
@@ -20,7 +21,7 @@
     vm.logForm = logForm;
     vm.search = search;
     vm.recentSearches = recentSearches;
-    
+
     vm.formFields = formService.getSearchForm();
     
     vm.formData = {};
@@ -36,7 +37,7 @@
     function recentSearches(){
       $state.go('menu.tabs.recent-search');
     }
-    
+
     activate();
 
     ////////////////
