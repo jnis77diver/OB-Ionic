@@ -68,7 +68,7 @@ angular
       .state('menu.tabs.results', {
         url: '/results',
         views: {
-          'search-tab': {
+          'results-tab': {
             templateUrl: 'app/results/tab-search-results.html',
             controller: 'SearchResultsCtrl as vm'
           }
@@ -77,7 +77,7 @@ angular
       .state('menu.tabs.result-detail', {
         url: '/results/:resultId',
         views: {
-          'main': {
+          'results-detail-tab': {
             templateUrl: 'app/results/tab-search-result-details.html',
             controller: 'SearchResultDetailsCtrl as srd'
           }
