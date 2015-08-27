@@ -82,6 +82,15 @@ angular
           }
         }
       })
+    .state('menu.tabs.recent-search', {
+        url: '/recent-searches',
+        views: {
+          'recent-searches': {
+            templateUrl: 'app/search/recent-search.html',
+            controller: 'RecentSearchCtrl as vm'
+          }
+        }
+      })
     .state('menu.tabs.profile', {
         url: '/profile',
         views: {

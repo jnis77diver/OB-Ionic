@@ -19,6 +19,7 @@
     vm.showError = true;
     vm.logForm = logForm;
     vm.search = search;
+    vm.recentSearches = recentSearches;
     
     vm.formFields = formService.getSearchForm();
     
@@ -30,6 +31,10 @@
 
     function search(){
       $state.go('menu.tabs.results');
+    }
+    
+    function recentSearches(){
+      $state.go('menu.tabs.recent-search');
     }
     
     activate();
