@@ -101,3 +101,7 @@
 .ion-android-notifications{
   color:red;
 }
+
+button.go-back {
+  border: none;
+}
