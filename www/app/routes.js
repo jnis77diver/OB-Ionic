@@ -66,7 +66,7 @@ angular
       .state('menu.tabs.results', {
         url: '/results',
         views: {
-          'results-tab': {
+          'search-tab': {
             templateUrl: 'app/results/tab-search-results.html',
             controller: 'SearchResultsCtrl as vm'
           }
@@ -75,7 +75,7 @@ angular
       .state('menu.tabs.result-detail', {
         url: '/results/:resultId',
         views: {
-          'results-detail-tab': {
+          'search-tab': {
             templateUrl: 'app/results/tab-search-result-details.html',
             controller: 'SearchResultDetailsCtrl as srd'
           }
@@ -84,7 +84,7 @@ angular
     .state('menu.tabs.recent-search', {
         url: '/recent-searches',
         views: {
-          'recent-searches': {
+          'search-tab': {
             templateUrl: 'app/search/recent-search.html',
             controller: 'RecentSearchCtrl as vm'
           }
