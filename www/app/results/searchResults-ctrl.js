@@ -26,17 +26,25 @@
       vm.isLoading = false;
     }, 1000);
 
-    var columns = dataService.columns;
-    vm.data.columns = columns;
+    var columns = dataService.getColumns();
+    columns.then(function(columns){
+      vm.data.columns = columns;
+    });
 
     var items = dataService.getData();
-    vm.data.items = items;
+    items.then(function(items){
+      vm.data.items = items;
+    });
 
-    var groups = dataService.groups;
-    vm.data.groups = groups;
+    var groups = dataService.getGroups();
+    groups.then(function(groups){
+      vm.data.groups = groups;
+    });
 
     var products = dataService.getProducts();
-    vm.data.products = products;
+    products.then(function(products){
+      vm.data.products = products;
+    });
 
     function toggleGroup(group) {
       if (vm.isGroupShown(group)) {
