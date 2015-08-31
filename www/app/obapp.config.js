@@ -4,8 +4,8 @@
     .module('OBApp')
     .config(configure);
     
- configure.$inject = ['$httpProvider'];
+ configure.$inject = ['$httpProvider', 'CacheFactoryProvider'];
  
- function configure($httpProvider){
+ function configure($httpProvider, CacheFactoryProvider){
    $httpProvider.interceptors.push('authInterceptor');
  }

@@ -3,10 +3,11 @@
 angular.module('OBApp', [
   'ionic',
   'formlyIonic',
-  'ngCordova'
+  'ngCordova',
+  'angular-cache'
 ])
 
-  .run(function($ionicPlatform) {
+  .run(function($http, $ionicPlatform, CacheFactory) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -20,6 +21,15 @@ angular.module('OBApp', [
         StatusBar.styleLightContent();
       }
     });
+
+    // for Angular-Cache caching in Local Storage
+    // TODO: set a realistic maxAge based on OB requirements
+    $http.defaults.cache = CacheFactory('defaultCache', {
+      storageMode: 'localStorage',
+      maxAge: 15 * 60 * 1000, // Items added to this cache expire after 15 minutes
+      deleteOnExpire: 'aggressive' // Items will be deleted from this cache when they expire
+    });
+
   })
   .run(function ($rootScope, $state, $ionicHistory, authService) {
   $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {

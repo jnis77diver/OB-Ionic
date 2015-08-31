@@ -12,7 +12,7 @@
         sendSearchResultsEmail: sendSearchResultsEmail,
         sendMobileUrlEmail: sendMobileUrlEmail,
         sendHomeUrlEmail: sendHomeUrlEmail
-      }
+      };
       
       function sendSearchResultsEmail(data){
         var emailTemplate = getResultHtml(data);
