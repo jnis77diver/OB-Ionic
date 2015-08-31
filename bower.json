@@ -5,16 +5,17 @@
     "ionic": "driftyco/ionic-bower#1.1.0"
   },
   "dependencies": {
-    "ionicons": "~2.0.1",
-    "underscore": "~1.8.3",
-    "api-check": "~7.5.0",
-    "angular-formly": "~6.23.0",
-    "angular-formly-templates-ionic": "~1.0.4",
     "angular": "~1.4.4",
     "angular-animate": "~1.4.4",
+    "angular-cache": "~4.3.2",
+    "angular-formly": "~6.23.0",
+    "angular-formly-templates-ionic": "~1.0.4",
     "angular-sanitize": "~1.4.4",
     "angular-ui-router": "~0.2.15",
+    "api-check": "~7.5.0",
     "ionic": "~1.1.0",
-    "ngCordova": "~0.1.20-alpha"
+    "ionicons": "~2.0.1",
+    "ngCordova": "~0.1.20-alpha",
+    "underscore": "~1.8.3"
   }
 }
