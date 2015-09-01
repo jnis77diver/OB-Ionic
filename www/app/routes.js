@@ -64,6 +64,7 @@ angular
         }
       })
       .state('menu.tabs.results', {
+        cache: false,
         url: '/results',
         views: {
           'search-tab': {
