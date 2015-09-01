@@ -7,7 +7,7 @@ angular.module('OBApp', [
   'angular-cache'
 ])
 
-  .run(function($http, $ionicPlatform, CacheFactory) {
+  .run(function($http, $ionicPlatform, CacheFactory, notificationService) {
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -20,6 +20,9 @@ angular.module('OBApp', [
         // org.apache.cordova.statusbar required
         StatusBar.styleLightContent();
       }
+      console.log(notificationService);
+      //Register Notfications
+      notificationService.register();
     });
 
     // for Angular-Cache caching in Local Storage
@@ -38,6 +41,7 @@ angular.module('OBApp', [
         if (next.name !== 'login') {
           event.preventDefault();
           $state.go('login');
+          register();
         }
       }
     }
