@@ -5,6 +5,8 @@ var order   = require('gulp-order');
 var sass    = require('gulp-sass');
 var plumber = require('gulp-plumber');
 var minifyCss = require('gulp-minify-css');
+var fs = require('fs');
+var del = require('del');
 
 
 var paths   = require('../paths')();
@@ -12,7 +14,7 @@ var paths   = require('../paths')();
 /**
  * Wire Bower dependencies and inject application js
  */
-gulp.task('index', ['sass', 'vendor-js', 'vendor-css', 'vendor-fonts'], function() {
+gulp.task('index', ['clean:stylesheets','sass', 'images', 'vendor-js', 'vendor-css', 'vendor-fonts'], function() {
   gulp
     // Source index.html
     .src(paths.client + 'index.html')
@@ -81,11 +83,22 @@ gulp.task('lib-js', function(){
     .pipe(inject(gulp.src(paths.lib + '*.js', {read: false}),  {relative: true, name: 'lib'}))
     .pipe(gulp.dest(paths.client));
 });
+gulp.task('images', function(){
+  return gulp
+    .src(fs.existsSync(paths.customTheme) ? paths.customTheme + '/img/*' : paths.images)
+    .pipe(gulp.dest(paths.clientImages));
+});
+/**
+ * Clear old stylesheets
+ */
+gulp.task('clean:stylesheets', function () {
+  return del([paths.sassStyle]);
+});
 /**
  * Sass
  */
 gulp.task('sass', function(done) {
-  gulp.src(paths.sass)
+  gulp.src(fs.existsSync(paths.customTheme) ? paths.customTheme + 'scss/*.scss' : paths.sass)
     .pipe(sass({
       errLogToConsole: true
     }))
