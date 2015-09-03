@@ -22,8 +22,11 @@
     vm.search = search;
     vm.recentSearches = recentSearches;
 
-    vm.formFields = formService.getSearchForm();
-    
+    var formFields = formService.getSearchForm();
+    formFields.then(function(data){
+      vm.formFields = data;
+    });
+
     vm.formData = {};
 
     function logForm(data){
