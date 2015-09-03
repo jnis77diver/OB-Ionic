@@ -1,17 +1,59 @@
 var gulp = require('gulp');
-var karma = require('karma').server;
-var paths   = require('../paths')();
+var wiredep = require('wiredep');
+var inject = require('gulp-inject');
+var plumber = require('gulp-plumber');
+var order = require('gulp-order');
+var Server = require('karma').Server;
+var path = require('path');
+var paths = require('../paths')();
+var runSequence = require('run-sequence');
 
+//var karma = require('karma').server;
+
+var root = path.join(__dirname, '../../');
 /**
  * Run test once and exit
  */
 gulp.task('test', function (done) {
-  karma.start({
-    configFile:  __dirname + '/../../karma.conf.js',
+  gulp
+    .src(paths.karma + 'karma.conf.js')
+    .pipe(plumber())
+    .pipe(wiredep.stream({
+      directory: 'bower_components',
+      exclude: '',
+      dependencies: true,
+      devDependencies: true,
+      fileTypes: {
+        js: {
+          block: /(([ \t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi,
+          detect: {
+            js: /['\']([^'\']+\.js)['\'],?/gi,
+          },
+          replace: {
+            js: '"{{filePath}}",'
+          }
+        }
+      }
+    }))
+    .pipe(inject(gulp.src(['./www/app/**/*.js'], {read: false}),
+      {
+        starttag: '// inject:js',
+        endtag: '// endinject',
+        transform: function (filepath, file, i, length) {
+          filepath = filepath.substring(1);
+          return '"' + filepath + '"' + (i + 1 < length ? ',' : ',');
+        }
+      }))
+    .pipe(gulp.dest('./'));
+
+
+  new Server({
+    configFile: root + '/karma.conf.js',
     singleRun: true
-  }, function(e) {
+  }, function () {
     done();
-  });
+  }).start();
+  //karma.start(karmaCommonConf, done);
 });
 
 /**
@@ -19,8 +61,8 @@ gulp.task('test', function (done) {
  */
 gulp.task('tdd', function (done) {
   karma.start({
-    configFile: __dirname + '/../../karma.conf.js'
-  }, function(e) {
+    configFile: root + '/karma.conf.js'
+  }, function (e) {
     done();
   });
 });

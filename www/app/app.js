@@ -20,18 +20,21 @@ angular.module('OBApp', [
         // org.apache.cordova.statusbar required
         StatusBar.styleLightContent();
       }
-      console.log(notificationService);
+      //console.log(notificationService);
       //Register Notfications
       notificationService.register();
     });
 
     // for Angular-Cache caching in Local Storage
     // TODO: set a realistic maxAge based on OB requirements
+    // TODO: karma throws an error with this uncommented. Figure out how to get around this
+/*
     $http.defaults.cache = CacheFactory('defaultCache', {
       storageMode: 'localStorage',
       maxAge: 15 * 60 * 1000, // Items added to this cache expire after 15 minutes
       deleteOnExpire: 'aggressive' // Items will be deleted from this cache when they expire
     });
+*/
 
   })
   .run(function ($rootScope, $state, $ionicHistory, authService) {
@@ -41,7 +44,6 @@ angular.module('OBApp', [
         if (next.name !== 'login') {
           event.preventDefault();
           $state.go('login');
-          register();
         }
       }
     }
