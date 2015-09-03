@@ -44,7 +44,6 @@ angular.module('OBApp', [
         if (next.name !== 'login') {
           event.preventDefault();
           $state.go('login');
-          register();
         }
       }
     }
