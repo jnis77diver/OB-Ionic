@@ -12,7 +12,7 @@
         request: request,
         response: response,
         responseError: responseError
-      }
+      };
       
       function request(config){
         var token = authService.getToken();
