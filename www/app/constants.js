@@ -7,5 +7,5 @@
     angular
         .module('OBApp')
         /* The below allows for quick JWT testing. */
-        .constant('API', 'http://test-routes.herokuapp.com')
+        .constant('API', 'http://ob-backend-test.azurewebsites.net');
 })();

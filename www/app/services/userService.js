@@ -11,20 +11,20 @@
       return {
         login: login,
         register: register
-      }
+      };
       
       function login(username, password){
-        return $http.post(API + '/auth/login', {
+        return $http.post(API + '/login', {
           username: username,
           password: password
-        })
+        });
       }
       
       function register(username, password){
-        return $http.post(API + '/auth/register', {
+        return $http.post(API + '/register', {
           username: username,
           password: password
-         })
+         });
       }
     }
   })();

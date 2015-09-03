@@ -14,7 +14,7 @@
         getToken: getToken,
         isAuthenticated: isAuthenticated,
         logout: logout
-      }
+      };
       
       function parseJwt(token){
           var base64Url = token.split('.')[1];
