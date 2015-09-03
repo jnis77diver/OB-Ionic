@@ -22,6 +22,7 @@ module.exports = function() {
     images: './img/*',
     clientImages: appRoot + 'img/',
     sass: ['./scss/**/*.scss'],
-    customTheme: './customTheme/'
-  }
+    customTheme: './customTheme/',
+    karma: './'
+  };
 };
