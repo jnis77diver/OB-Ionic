@@ -7,6 +7,8 @@ var plumber = require('gulp-plumber');
 var minifyCss = require('gulp-minify-css');
 var fs = require('fs');
 var del = require('del');
+var runSequence = require('run-sequence');
+
 
 
 var paths   = require('../paths')();
@@ -14,7 +16,11 @@ var paths   = require('../paths')();
 /**
  * Wire Bower dependencies and inject application js
  */
-gulp.task('index', ['clean:stylesheets','sass', 'images', 'vendor-js', 'vendor-css', 'vendor-fonts'], function() {
+gulp.task('index', function() {
+  runSequence('clean:stylesheets', 'sass', 'images', 'vendor-js', 'vendor-css', 'vendor-fonts', 'injectBowerApp');
+});
+
+gulp.task('injectBowerApp', function(){
   gulp
     // Source index.html
     .src(paths.client + 'index.html')
