@@ -18,6 +18,7 @@ module.exports = function() {
     html:   appRoot + 'app/**/*.html',
     style:  appRoot + 'css/**/*.css',
     lib:    appRoot + 'lib/',
-    sass: ['./scss/**/*.scss']
-  }
+    sass: ['./scss/**/*.scss'],
+    karma: './'
+  };
 };
