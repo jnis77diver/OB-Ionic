@@ -16,3 +16,6 @@ Replace [platform] with ios or android
 > ionic build [platform]
 
 > ionic emulate [platform]
+
+## Testing
+> gulp test
