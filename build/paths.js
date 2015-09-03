@@ -17,8 +17,12 @@ module.exports = function() {
     source: appRoot + 'app/**/*.js',
     html:   appRoot + 'app/**/*.html',
     style:  appRoot + 'css/**/*.css',
+    sassStyle: appRoot + 'css/**/*.app.css',
     lib:    appRoot + 'lib/',
+    images: './img/*',
+    clientImages: appRoot + 'img/',
     sass: ['./scss/**/*.scss'],
+    customTheme: './customTheme/',
     karma: './'
   };
 };
