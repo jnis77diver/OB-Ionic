@@ -99,7 +99,7 @@
     }
 
     function getGroups() {
-      var defferred = $q.defer();
+      var deferred = $q.defer();
       $ionicLoading.show({
         template: 'Loading...'
       });
@@ -108,14 +108,14 @@
         .success(function (data, status) {
           console.log("Received groups data via HTTP.", data, status);
           $ionicLoading.hide();
-          defferred.resolve(data);
+          deferred.resolve(data);
         })
         .error(function () {
           console.log('Error while making HTTP call.');
           $ionicLoading.hide();
-          defferred.reject();
+          deferred.reject();
         });
-      return defferred.promise;
+      return deferred.promise;
     }
 
     function getProducts() {
