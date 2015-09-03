@@ -64,7 +64,7 @@
     }
       
     function storeDeviceToken(type) {
-        var user = { user: 'user' + Math.floor((Math.random() * 10000000) + 1), type: type, token: $scope.regId };
+        var user = { user: 'user' + Math.floor((Math.random() * 10000000) + 1), type: type, token: $rootScope.regId };
         console.log("Post token for registered device with data " + JSON.stringify(user));
     
         $http.post('http://192.168.1.16:8000/subscribe', JSON.stringify(user))
