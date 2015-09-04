@@ -8,7 +8,7 @@ var minifyCss = require('gulp-minify-css');
 var fs = require('fs');
 var del = require('del');
 var runSequence = require('run-sequence');
-
+var shell = require('gulp-shell');
 
 
 var paths   = require('../paths')();
@@ -17,9 +17,19 @@ var paths   = require('../paths')();
  * Wire Bower dependencies and inject application js
  */
 gulp.task('index', function() {
-  runSequence('clean:stylesheets', 'sass', 'images', 'vendor-js', 'vendor-css', 'vendor-fonts', 'injectBowerApp');
+  runSequence('clean:stylesheets', 'sass', 'images', 'vendor-js', 'vendor-css', 'vendor-fonts', 'injectBowerApp', 'resources');
 });
 
+/**
+ * Resources
+ */
+gulp.task('resources', shell.task([
+  'ionic resources'
+]));
+
+/**
+ * Inject Bower
+ */
 gulp.task('injectBowerApp', function(){
   gulp
     // Source index.html
@@ -80,6 +90,7 @@ gulp.task('vendor-fonts', function() {
     .src(fonts)
     .pipe(gulp.dest(paths.vendor + 'fonts/fonts/'));
 });
+
 /**
  * Inject lib.js
  */
@@ -94,12 +105,14 @@ gulp.task('images', function(){
     .src(fs.existsSync(paths.customTheme) ? paths.customTheme + '/img/*' : paths.images)
     .pipe(gulp.dest(paths.clientImages));
 });
+
 /**
  * Clear old stylesheets
  */
 gulp.task('clean:stylesheets', function () {
   return del([paths.sassStyle]);
 });
+
 /**
  * Sass
  */
