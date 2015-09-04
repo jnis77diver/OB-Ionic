@@ -11,18 +11,23 @@
   function dataService($http, $q, $ionicLoading, API, CacheFactory) {
     // get handle to dataCache being stored in Local Storage or create one
     // change cache maxAge in app.js run function
-    var dataCache = CacheFactory('dataCache', {
-      deleteOnExpire: 'aggressive',
-      onExpire: function (key, value) {
-        getData()
-          .then(function () {
-            console.log("League Data Cache was automatically refreshed.", new Date());
-          }, function () {
-            console.log("Error getting data. Putting expired item back in the cache.", new Date());
-            dataCache.put(key, value);
-          });
-      }
-    });
+    var dataCache;
+    if(!CacheFactory.get('dataCache')){
+      dataCache = CacheFactory('dataCache', {
+        deleteOnExpire: 'aggressive',
+        onExpire: function (key, value) {
+          getData()
+            .then(function () {
+              console.log("League Data Cache was automatically refreshed.", new Date());
+            }, function () {
+              console.log("Error getting data. Putting expired item back in the cache.", new Date());
+              dataCache.put(key, value);
+            });
+        }
+      });
+    } else {
+      dataCache = CacheFactory.get('dataCache');
+    }
 
     return {
       getColumns: getColumns,
@@ -122,7 +127,7 @@
           return {
             group: key,
             products: data
-          }
+          };
         }).value();
       });
     }
