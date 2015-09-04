@@ -21,13 +21,10 @@
     vm.logForm = logForm;
     vm.search = search;
     vm.recentSearches = recentSearches;
-
-    var formFields = formService.getSearchForm();
-    formFields.then(function(data){
-      vm.formFields = data;
-    });
-
     vm.formData = {};
+    //
+    var formFields;
+
 
     function logForm(data){
       console.warn(data);
@@ -46,6 +43,11 @@
     ////////////////
 
     function activate() {
+      // TODO: determine clientId, userId, formId which will be passed in as args to getSearchForm
+      formFields = formService.getSearchForm();
+      formFields.then(function(data){
+        vm.formFields = data;
+      });
     }
 
 

@@ -5,10 +5,10 @@
     .module('OBApp')
     .factory('dataService', dataService);
 
-  dataService.$inject = ['$http', '$q', '$ionicLoading', 'CacheFactory'];
+  dataService.$inject = ['$http', '$q', '$ionicLoading', 'API', 'CacheFactory'];
 
   /* @ngInject */
-  function dataService($http, $q, $ionicLoading, CacheFactory) {
+  function dataService($http, $q, $ionicLoading, API, CacheFactory) {
     // get handle to dataCache being stored in Local Storage or create one
     // change cache maxAge in app.js run function
     var dataCache = CacheFactory('dataCache', {
@@ -23,9 +23,6 @@
           });
       }
     });
-
-
-
 
     return {
       getColumns: getColumns,
@@ -55,13 +52,14 @@
 
       if (recentSearchData) {
         console.log("Found data inside cache", recentSearchData);
+        deferred.resolve(recentSearchData);
       }
       else {
         $ionicLoading.show({
           template: 'Loading...'
         });
         //TODO: change this url to OB backend
-        $http.get('http://ob-backend-test.azurewebsites.net/products')
+        $http.get(API + '/products')
           .success(function (data, status) {
             console.log("Received product data via HTTP.", data, status);
             dataCache.put(cacheKey, data);
@@ -84,7 +82,7 @@
         template: 'Loading...'
       });
       //TODO: change this url to OB backend
-      $http.get('http://ob-backend-test.azurewebsites.net/columns')
+      $http.get(API + '/columns')
         .success(function (data, status) {
           console.log("Received column data via HTTP.", data, status);
           $ionicLoading.hide();
@@ -104,7 +102,7 @@
         template: 'Loading...'
       });
       //TODO: change this url to OB backend
-      $http.get('http://ob-backend-test.azurewebsites.net/groups')
+      $http.get(API + '/groups')
         .success(function (data, status) {
           console.log("Received groups data via HTTP.", data, status);
           $ionicLoading.hide();
