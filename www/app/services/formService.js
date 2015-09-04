@@ -12,14 +12,14 @@
         getSearchForm: getSearchForm
       };
       
-      function getSearchForm(){
+      function getSearchForm(clientId, userId, formId){
         var deferred = $q.defer();
         $ionicLoading.show({
           template: 'Loading...'
         });
 
         //TODO: change this url to OB backend
-        $http.get(API + '/search-form')
+        $http({method: 'GET', url: API + '/search-form', params: {clientId: clientId, useId: userId, formId: formId} })
           .success(function (data, status) {
             console.log("Received groups data via HTTP.", data, status);
             $ionicLoading.hide();

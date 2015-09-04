@@ -52,6 +52,7 @@
 
       if (recentSearchData) {
         console.log("Found data inside cache", recentSearchData);
+        deferred.resolve(recentSearchData);
       }
       else {
         $ionicLoading.show({
