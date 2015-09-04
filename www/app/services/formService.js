@@ -5,9 +5,9 @@
     .module('OBApp')
     .factory('formService', formService);
 
-    formService.$inject = ['$http', '$q', '$ionicLoading'];
+    formService.$inject = ['$http', '$q', '$ionicLoading', 'API'];
     
-    function formService($http, $q, $ionicLoading){
+    function formService($http, $q, $ionicLoading, API){
       return {
         getSearchForm: getSearchForm
       };
@@ -19,7 +19,7 @@
         });
 
         //TODO: change this url to OB backend
-        $http.get('http://ob-backend-test.azurewebsites.net/search-form')
+        $http.get(API + '/search-form')
           .success(function (data, status) {
             console.log("Received groups data via HTTP.", data, status);
             $ionicLoading.hide();
