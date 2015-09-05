@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Tue Sep 01 2015 15:43:57 GMT-0500 (COT)
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -41,36 +41,34 @@ module.exports = function(config) {
       // app files get loaded from gulp inject
 
       // inject:js
-              "www/app/app.js",
-              "www/app/constants.js",
-              "www/app/obapp.config.js",
-              "www/app/routes.js",
-              "www/app/account/account-ctrl.js",
-              "www/app/factories/authInterceptor.js",
-              "www/app/factories/underscore.js",
-              "www/app/home/home-ctrl.js",
-              "www/app/login/login-ctrl.js",
-              "www/app/notifications/notifications-ctrl.js",
-              "www/app/register/register-ctrl.js",
-              "www/app/results/searchResultDetails-ctrl.js",
-              "www/app/results/searchResults-ctrl.js",
-              "www/app/search/recent-search-ctrl.js",
-              "www/app/search/search-ctrl.js",
-              "www/app/services/authService.js",
-              "www/app/services/dataService.js",
-              "www/app/services/formService.js",
-              "www/app/services/mailService.js",
-              "www/app/services/notificationService.js",
-              "www/app/services/userService.js",
-              // endinject
+      "www/app/app.js",
+      "www/app/constants.js",
+      "www/app/obapp.config.js",
+      "www/app/routes.js",
+      "www/app/account/account-ctrl.js",
+      "www/app/factories/authInterceptor.js",
+      "www/app/factories/underscore.js",
+      "www/app/home/home-ctrl.js",
+      "www/app/login/login-ctrl.js",
+      "www/app/notifications/notifications-ctrl.js",
+      "www/app/register/register-ctrl.js",
+      "www/app/results/searchResultDetails-ctrl.js",
+      "www/app/results/searchResults-ctrl.js",
+      "www/app/search/recent-search-ctrl.js",
+      "www/app/search/search-ctrl.js",
+      "www/app/services/authService.js",
+      "www/app/services/dataService.js",
+      "www/app/services/formService.js",
+      "www/app/services/mailService.js",
+      "www/app/services/notificationService.js",
+      "www/app/services/userService.js",
+      // endinject
 
-
-
-
-
+      // lib helpers
+      'www/test/lib/**/*.js',
 
       // test files
-      'www/test/**/*.js'
+      'www/test/client/**/*.js'
 
     ],
 
@@ -117,9 +115,12 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
-    //plugins: [
-      //require('./plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js')
-    //]
+    singleRun: false,
+    client: {
+      captureConsole: true,
+      mocha: {
+        bail: true
+      }
+    }
   });
 };
