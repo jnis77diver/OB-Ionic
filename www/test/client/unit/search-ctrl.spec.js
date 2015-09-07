@@ -21,8 +21,12 @@ describe('Search Controller', function () {
       $httpBackend.whenGET('app/layout/menu-layout.html').respond(200);
       $httpBackend.whenGET('app/register/register.html').respond(200);
       $httpBackend.whenGET('app/results/tab-search-result-details.html').respond(200);
+      $httpBackend.whenGET('app/results/tab-search-results.html').respond(200);
+      $httpBackend.whenGET('app/search/recent-search.html').respond(200);
+
       $httpBackend.whenGET('app/login/login.html').respond(200);
       $httpBackend.whenPOST('http://192.168.1.16:8000/subscribe').respond(200);
+      $httpBackend.whenGET('http://ob-backend-test.azurewebsites.net/search-form').respond(200);
 
     });
     $templateCache.put(view, '');
@@ -42,11 +46,16 @@ describe('Search Controller', function () {
   });
 
   xit('should have isCurrent() for to return `/profile`', function () {
-    controller.search();
-    $rootScope.$apply();
+    $state.go('menu.tabs.recent-search');
     expect($state.current.name).to.equal('menu.tabs.recent-search');
+    $rootScope.$apply();
   });
 
+  xit('should redirect to /recent-searches search is clicked', function () {
+    controller.search();
+    $rootScope.$apply();
+    expect($location.path()).to.equal('/recent-searches');
+  });
 
 });
 
