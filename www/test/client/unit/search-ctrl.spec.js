@@ -25,7 +25,6 @@ describe('Search Controller', function () {
       $httpBackend.whenGET('app/search/recent-search.html').respond(200);
 
       $httpBackend.whenGET('app/login/login.html').respond(200);
-      $httpBackend.whenPOST('http://192.168.1.16:8000/subscribe').respond(200);
       $httpBackend.whenGET(API + '/search-form').respond(200);
 
     });
@@ -58,5 +57,3 @@ describe('Search Controller', function () {
   });
 
 });
-
-

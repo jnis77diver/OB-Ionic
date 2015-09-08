@@ -23,7 +23,6 @@
       };
       
       $cordovaPush.register(config).then(function (result) {
-        console.log("Register success " + result);
         storeDeviceToken("ios");
         
         $rootScope.$on('$cordovaPush:notificationReceived', function (event, notification) {
@@ -65,16 +64,7 @@
       
     function storeDeviceToken(type) {
         var user = { user: 'user' + Math.floor((Math.random() * 10000000) + 1), type: type, token: $rootScope.regId };
-        console.log("Post token for registered device with data " + JSON.stringify(user));
-    
-        $http.post('http://192.168.1.16:8000/subscribe', JSON.stringify(user))
-            .success(function (data, status) {
-                console.log("Token stored, device is successfully subscribed to receive push notifications.");
-            })
-            .error(function (data, status) {
-                console.log("Error storing device token." + data + " " + status)
-            }
-        );
+        //TODO: Store the device token
     }
 
     function getNotificationGroups(){
