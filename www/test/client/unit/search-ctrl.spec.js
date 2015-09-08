@@ -14,7 +14,7 @@ describe('Search Controller', function () {
   beforeEach(function () {
     // using bardjs library to make injecting easier
     bard.inject(function ($controller, $log, $q, $rootScope, $ionicViewService, $window,
-                          $state, $httpBackend, $templateCache, $location) {
+                          $state, $httpBackend, $templateCache, $location, API) {
       controller = $controller('SearchCtrl');
 
       $httpBackend.whenGET('app/core/tabs.html').respond(200);
@@ -26,7 +26,7 @@ describe('Search Controller', function () {
 
       $httpBackend.whenGET('app/login/login.html').respond(200);
       $httpBackend.whenPOST('http://192.168.1.16:8000/subscribe').respond(200);
-      $httpBackend.whenGET('http://ob-backend-test.azurewebsites.net/search-form').respond(200);
+      $httpBackend.whenGET(API + '/search-form').respond(200);
 
     });
     $templateCache.put(view, '');

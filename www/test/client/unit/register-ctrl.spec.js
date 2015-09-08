@@ -13,7 +13,7 @@ describe('Register Controller', function () {
   beforeEach(function () {
     // using bardjs library to make injecting easier
     bard.inject(function ($controller, $log, $q, $rootScope, $ionicViewService, $window,
-                          $state, $httpBackend, $templateCache, $location, userService) {
+                          $state, $httpBackend, $templateCache, $location, userService, API) {
       controller = $controller('RegisterCtrl');
 
       $httpBackend.whenGET('app/core/tabs.html').respond(200);
@@ -27,7 +27,7 @@ describe('Register Controller', function () {
       $httpBackend.whenGET('app/login/login.html').respond(200);
       $httpBackend.whenGET('app/register/register.html').respond(200);
       $httpBackend.whenPOST('http://192.168.1.16:8000/subscribe').respond(200);
-      $httpBackend.whenPOST('http://ob-backend-test.azurewebsites.net/register').respond(200);
+      $httpBackend.whenPOST(API + '/register').respond(200);
     });
   });
 
