@@ -26,7 +26,6 @@ describe('Register Controller', function () {
       $httpBackend.whenGET('app/results/tab-search-result-details.html').respond(401);
       $httpBackend.whenGET('app/login/login.html').respond(200);
       $httpBackend.whenGET('app/register/register.html').respond(200);
-      $httpBackend.whenPOST('http://192.168.1.16:8000/subscribe').respond(200);
       $httpBackend.whenPOST(API + '/register').respond(200);
     });
   });
