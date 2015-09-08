@@ -15,6 +15,10 @@
       };
       
       function sendSearchResultsEmail(data){
+        if(!data.groups || !data.colums || !data.products){
+          return;
+        }
+        
         var emailTemplate = getResultHtml(data);
 
         $cordovaEmailComposer.isAvailable().then(function() {
