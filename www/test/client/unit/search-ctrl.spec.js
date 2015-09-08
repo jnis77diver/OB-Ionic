@@ -33,6 +33,8 @@ describe('Search Controller', function () {
   });
 
   beforeEach(function(){
+    //login
+    
   });
 
 
@@ -50,10 +52,11 @@ describe('Search Controller', function () {
     $rootScope.$apply();
   });
 
-  xit('should redirect to /recent-searches search is clicked', function () {
+  it('should try to redirect to /recent-searches search is clicked', function () {
+    var spy = sinon.spy($state, 'go');
     controller.search();
-    $rootScope.$apply();
-    expect($location.path()).to.equal('/recent-searches');
+    //$rootScope.$apply();
+    expect(spy).to.have.been.calledOnce.and.calledWith('menu.tabs.recent-search');
   });
 
 });
