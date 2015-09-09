@@ -84,7 +84,8 @@ OB-Ionic
 ```
 This project can be opened on a Mac that has Xcode installed. 
 
-In order to release the app using Apple's B2B program, you must do the following: 
+In order to release the app using Apple's B2B program, you must do the following:
+ 
 1. Sign up for a developer licence.  This costs $99 a year through Apple.
 
 2. Make sure your bank and tax information is set up correctly in iTunes Connect.
