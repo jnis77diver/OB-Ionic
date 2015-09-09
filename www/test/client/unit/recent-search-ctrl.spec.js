@@ -1,4 +1,4 @@
-describe('Home Controller', function () {
+describe('RecentSearch Controller', function () {
   var controller;
   var view = 'app/home/tab-home.html';
 
@@ -15,15 +15,15 @@ describe('Home Controller', function () {
     // using bardjs library to make injecting easier
     bard.inject(function ($controller, $log, $q, $rootScope, $ionicViewService, $window,
                           $state, $httpBackend, $templateCache, $location, API, userService,
-                          authService, notificationService) {
+                          authService) {
 
-      controller = $controller('HomeCtrl', {});
+      controller = $controller('RecentSearchCtrl', {});
 
-      $httpBackend.whenGET('app/layout/menu-layout.html').respond(200);
       $httpBackend.whenGET('app/core/tabs.html').respond(200);
+      $httpBackend.whenGET('app/layout/menu-layout.html').respond(200);
       $httpBackend.whenGET('app/register/register.html').respond(200);
       $httpBackend.whenGET('app/login/login.html').respond(200);
-      $httpBackend.whenGET('app/notifications/notifications.html').respond(200);
+      $httpBackend.whenGET('app/results/tab-search-results.html').respond(200);
     });
   });
 
@@ -42,20 +42,11 @@ describe('Home Controller', function () {
     expect(controller).to.be.defined;
   });
 
-  it('should redirect to menu.tabs.notifications when showNotifications is called', function () {
-    var spy = sinon.spy($state, 'go');
-    controller.showNotifications();
-    $httpBackend.flush();
-    expect(spy).to.have.been.calledOnce.and.calledWith('menu.tabs.notifications');
-  });
-
   it('should populate notificationGroups when controller is loaded', function () {
-    var stub = sinon.stub(notificationService);
-    stub.getNotificationGroups.returns({});
-    controller.activate();
+    var spy = sinon.spy($state, 'go');
+    controller.showResults();
     $httpBackend.flush();
-    expect(controller.notificationGroups).to.deep.equal({});
+    expect(spy).to.have.been.calledOnce.and.calledWith('menu.tabs.results');
   });
-
-
+  
 });
