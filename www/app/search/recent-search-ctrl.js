@@ -18,7 +18,7 @@
     vm.showResults = showResults;
     
     function showResults(){
-      $state.go('menu.tabs.results')
+      $state.go('menu.tabs.results');
     }
     
     activate();

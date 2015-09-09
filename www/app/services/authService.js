@@ -34,8 +34,12 @@
         var token = getToken();
           if(token) {
             var params = parseJwt(token);
+            console.log('params is ', params);
+            console.log('new Date().getTime() / 1000 is ', new Date().getTime() / 1000);
+            console.log('params.exp is ', params.exp);
             return Math.round(new Date().getTime() / 1000) <= params.exp;
           } else {
+            console.log('here');
             return false;
           }
       }

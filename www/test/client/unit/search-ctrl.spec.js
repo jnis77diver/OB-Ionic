@@ -28,12 +28,16 @@ describe('Search Controller', function () {
       $httpBackend.whenGET('app/search/recent-search.html').respond(200);
       $httpBackend.whenGET('app/login/login.html').respond(200);
       $httpBackend.whenGET(API + '/search-form').respond(200);
-      //$httpBackend.whenPOST(API + '/login').respond({userId: 'userX'}, {'token': 'xxx'});
 
     });
-
   });
-  
+
+  beforeEach(function(){
+    // set isAuthenticated to true to avoid having to set tokens or login
+    var stub = sinon.stub(authService);
+    stub.isAuthenticated.returns(true);
+  });
+
 
   afterEach(function () {
   });
@@ -46,15 +50,16 @@ describe('Search Controller', function () {
     var spy = sinon.spy($state, 'go');
     controller.search();
     $httpBackend.flush();
-    expect(spy).to.have.been.calledTwice.and.calledWith('menu.tabs.results');
+    expect(spy).to.have.been.calledOnce.and.calledWith('menu.tabs.results');
   });
 
   it('should try to redirect to menu.tabs.recent-search state when  recent searches is clicked', function () {
+
     var spy = sinon.spy($state, 'go');
     controller.recentSearches();
     $httpBackend.flush();
     $rootScope.$apply();
-    expect(spy).to.have.been.calledTwice.and.calledWith('menu.tabs.recent-search');
+    expect(spy).to.have.been.calledOnce.and.calledWith('menu.tabs.recent-search');
   });
 
   it('should populate formFields with data when controller loads', function () {
