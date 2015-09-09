@@ -53,6 +53,6 @@ describe('Home Controller', function () {
     $httpBackend.flush();
     expect(controller.notificationGroups).to.deep.equal({});
   });
-  
+
 
 });
