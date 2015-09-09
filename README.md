@@ -85,12 +85,20 @@ OB-Ionic
 This project can be opened on a Mac that has Xcode installed. 
 
 In order to release the app using Apple's B2B program, you must do the following: 
-1. Sign up for a developer licence.  This costs $99 a year through Apple.  
-2. Make sure your bank and tax information is set up correctly in iTunes Connect. 
-3. In iTunes Connect, create an app record for this app.  You will only need to do this once per B2B app. 
-4. After the app is created in iTunes Connect, go to the app details page.  On this page, select the 'Pricing' tab. 
-5. On the pricing tab, select 'Custom B2B App'.  
+1. Sign up for a developer licence.  This costs $99 a year through Apple.
+
+2. Make sure your bank and tax information is set up correctly in iTunes Connect.
+
+3. In iTunes Connect, create an app record for this app.  You will only need to do this once per B2B app.
+
+4. After the app is created in iTunes Connect, go to the app details page.  On this page, select the 'Pricing' tab.
+
+5. On the pricing tab, select 'Custom B2B App'.
+ 
 6. You will be prompted to enter in at least one [Volume Purchase Program](http://vpp.itunes.apple.com/faq) Apple ID.  The addresses you enter here will be the users that have access to this particular B2B App.
+
 7. Follow the steps [outlined here](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/SubmittingYourApp/SubmittingYourApp.html) to create an archive of the app and upload it to iTunes Connect.
+
 8. When the app has been approved, the B2B customers will be able to install it on their devices that are logged in using the Volume Purchase Program Apple IDs you provided.
+
 
