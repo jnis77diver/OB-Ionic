@@ -28,12 +28,11 @@ describe('Search Controller', function () {
       $httpBackend.whenGET('app/search/recent-search.html').respond(200);
       $httpBackend.whenGET('app/login/login.html').respond(200);
       $httpBackend.whenGET(API + '/search-form').respond(200);
-      //$httpBackend.whenPOST(API + '/login').respond({userId: 'userX'}, {'token': 'xxx'});
 
     });
 
   });
-  
+
 
   afterEach(function () {
   });
