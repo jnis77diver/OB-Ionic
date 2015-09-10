@@ -86,11 +86,11 @@ This project can be opened on a Mac that has Xcode installed.
 
 In order to release the app using Apple's B2B program, you must do the following:
  
-1. Sign up for a developer licence.  This costs $99 a year through Apple.
+1. Sign up for an [Apple developer licence](https://developer.apple.com/programs/).  This costs $99 a year through Apple.
 
-2. Make sure your bank and tax information is set up correctly in iTunes Connect.
+2. Make sure your bank and tax information is set up correctly in [iTunes Connect](https://itunesconnect.apple.com/WebObjects/iTunesConnect.woa).
 
-3. In iTunes Connect, create an app record for this app.  You will only need to do this once per B2B app.
+3. In iTunes Connect, [create an app record for this app](https://developer.apple.com/library/ios/documentation/LanguagesUtilities/Conceptual/iTunesConnect_Guide/Appendices/B2B.html).  You will only need to do this once per B2B app.
 
 4. After the app is created in iTunes Connect, go to the app details page.  On this page, select the 'Pricing' tab.
 
