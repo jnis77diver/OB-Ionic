@@ -47,6 +47,11 @@
       columns.then(function(columns){
         vm.data.columns = columns;
       });
+      
+      var groups = dataService.getGroups();
+      groups.then(function(groups){
+        vm.data.groups = groups;
+      })
   
       var products = dataService.getProducts();
       products.then(function(products){

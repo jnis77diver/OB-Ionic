@@ -5,9 +5,9 @@
     .module('OBApp')
     .factory('mailService', mailService);
     
-    mailService.$inject = ['_', '$cordovaEmailComposer'];
+    mailService.$inject = ['_', '$cordovaEmailComposer', '$templateCache'];
     
-    function mailService(_, $cordovaEmailComposer){
+    function mailService(_, $cordovaEmailComposer, $templateCache){
       return {
         sendSearchResultsEmail: sendSearchResultsEmail,
         sendMobileUrlEmail: sendMobileUrlEmail,
@@ -15,7 +15,7 @@
       };
       
       function sendSearchResultsEmail(data){
-        if(!data.groups || !data.colums || !data.products){
+        if(!data.groups || !data.columns || !data.products){
           return;
         }
         
@@ -37,6 +37,7 @@
       }
       
       function getResultHtml(data){
+        var template = _.template($templateCache.get('app/emailTemplate/emailTemplate.html'));
         var html = '';
            
         for(var i = 0; i < data.groups.length; i++){
@@ -61,7 +62,10 @@
           }   
           html += '</table>';
         }
-        return html;
+        var x = template({resultData: html});
+        console.log(x);
+        
+        return template({resultData: html});
       }
       
       function sendMobileUrlEmail(){
