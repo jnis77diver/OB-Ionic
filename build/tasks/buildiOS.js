@@ -22,6 +22,7 @@ gulp.task('addPlugins', shell.task([
 ]));
 
 gulp.task('iosBuildStep', shell.task([
+  'gulp test',
   'gulp index',
   'ionic build ios'
 ]));

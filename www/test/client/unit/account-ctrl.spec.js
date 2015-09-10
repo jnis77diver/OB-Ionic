@@ -21,12 +21,14 @@ describe('Account Controller', function () {
       $httpBackend.whenGET('app/search/recent-search.html').respond(200);
       $httpBackend.whenGET('app/results/tab-search-result-details.html').respond(200);
       $httpBackend.whenGET('app/login/login.html').respond(200);
+      $httpBackend.whenGET('app/emailTemplate/emailTemplate.html').respond(200);
+
     });
   });
 
 
   it('should have an empty title', function () {
-    expect(controller.title).to.equal('');
+    expect(controller.title).to.equal('hello');
   });
 
 

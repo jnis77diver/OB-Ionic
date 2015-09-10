@@ -15,6 +15,8 @@ describe('formService', function () {
     $httpBackend.whenGET('app/layout/menu-layout.html').respond(200);
     $httpBackend.whenGET('app/register/register.html').respond(200);
     $httpBackend.whenGET('app/login/login.html').respond(200);
+    $httpBackend.whenGET('app/emailTemplate/emailTemplate.html').respond(200);
+
   });
 
   it('should exist', function () {

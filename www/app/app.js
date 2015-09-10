@@ -52,5 +52,5 @@ angular.module('OBApp', [
 
 })
 .run(function($templateRequest){
-  $templateRequest('app/emailTemplate/emailTemplate.html')
+  $templateRequest('app/emailTemplate/emailTemplate.html');
 });

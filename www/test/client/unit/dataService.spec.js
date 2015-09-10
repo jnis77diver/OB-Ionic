@@ -25,7 +25,8 @@ describe('dataService', function () {
       $httpBackend.whenGET('app/layout/menu-layout.html').respond(200);
       $httpBackend.whenGET('app/register/register.html').respond(200);
       $httpBackend.whenGET('app/login/login.html').respond(200);
-      //$httpBackend.whenGET('http://ob-backend-test.azurewebsites.net/columns').respond(200, {data: 'jonah'});
+      $httpBackend.whenGET('app/emailTemplate/emailTemplate.html').respond(200);
+
     });
 
     it('getColumns returns a value', function(){

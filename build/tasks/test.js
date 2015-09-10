@@ -59,9 +59,7 @@ gulp.task('karmaRun', function(done){
   new Server({
     configFile: root + '/karma.conf.js',
     singleRun: true
-  }, function () {
-    done();
-  }).start();
+  }, done).start();
 
 });
 
