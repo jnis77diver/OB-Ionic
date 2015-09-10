@@ -28,7 +28,7 @@ describe('Account Controller', function () {
 
 
   it('should have an empty title', function () {
-    expect(controller.title).to.equal('hello');
+    expect(controller.title).to.equal('');
   });
 
 

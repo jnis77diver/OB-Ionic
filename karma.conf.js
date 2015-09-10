@@ -46,14 +46,12 @@ module.exports = function (config) {
       "www/app/obapp.config.js",
       "www/app/routes.js",
       "www/app/account/account-ctrl.js",
-      "www/app/home/home-ctrl.js",
       "www/app/factories/authInterceptor.js",
       "www/app/factories/underscore.js",
+      "www/app/home/home-ctrl.js",
       "www/app/login/login-ctrl.js",
       "www/app/notifications/notifications-ctrl.js",
       "www/app/register/register-ctrl.js",
-      "www/app/results/searchResultDetails-ctrl.js",
-      "www/app/results/searchResults-ctrl.js",
       "www/app/search/recent-search-ctrl.js",
       "www/app/search/search-ctrl.js",
       "www/app/services/authService.js",
@@ -62,6 +60,8 @@ module.exports = function (config) {
       "www/app/services/mailService.js",
       "www/app/services/notificationService.js",
       "www/app/services/userService.js",
+      "www/app/results/searchResultDetails-ctrl.js",
+      "www/app/results/searchResults-ctrl.js",
       // endinject
 
       // lib helpers

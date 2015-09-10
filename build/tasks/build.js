@@ -17,7 +17,7 @@ var paths   = require('../paths')();
  * Wire Bower dependencies and inject application js
  */
 gulp.task('index', function() {
-  runSequence('clean:stylesheets', 'sass', 'images', 'vendor-js', 'vendor-css', 'vendor-fonts', 'injectBowerApp', 'resources');
+  runSequence('clean:stylesheets', 'sass', 'images', 'vendor-js', 'vendor-css', 'vendor-fonts', 'injectBowerApp');
 });
 
 /**
