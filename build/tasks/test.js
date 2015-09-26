@@ -8,7 +8,6 @@ var path = require('path');
 var paths = require('../paths')();
 var runSequence = require('run-sequence');
 
-//var karma = require('karma').server;
 
 var root = path.join(__dirname, '../../');
 /**
@@ -16,7 +15,6 @@ var root = path.join(__dirname, '../../');
  */
 gulp.task('test', function (done) {
   runSequence('karmaInject', 'karmaRun');
-
 });
 
 gulp.task('karmaInject', function(){

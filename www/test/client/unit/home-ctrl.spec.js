@@ -24,7 +24,6 @@ describe('Home Controller', function () {
       $httpBackend.whenGET('app/register/register.html').respond(200);
       $httpBackend.whenGET('app/login/login.html').respond(200);
       $httpBackend.whenGET('app/notifications/notifications.html').respond(200);
-      $httpBackend.whenGET('app/emailTemplate/emailTemplate.html').respond(200);
 
     });
   });
