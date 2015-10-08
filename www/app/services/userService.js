@@ -20,6 +20,13 @@
 
         return deferred.promise;
       }
+      function register() {
+        var deferred = $q.defer();
+        deferred.resolve();
+
+        return deferred.promise;
+
+      }
 
       //TODO: use the login and register functions below when auth backend is implemented
 /*

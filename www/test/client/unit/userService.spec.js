@@ -24,7 +24,8 @@ describe('userService', function () {
   });
 
 
-  it('login should hit /login which returns a token', function () {
+  // TODO: un-skip this when real backend implemented
+  xit('login should hit /login which returns a token', function () {
     var user = {
       username: 'joe',
       password: 'blow'
@@ -37,7 +38,8 @@ describe('userService', function () {
     $httpBackend.flush();
   });
 
-  it('register should hits /register which returns a token', function () {
+  // TODO: un-skip this when real backend implemented
+  xit('register should hits /register which returns a token', function () {
     var user = {
       username: 'joe',
       password: 'blow'

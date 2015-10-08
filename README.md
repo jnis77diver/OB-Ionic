@@ -9,9 +9,10 @@
 > ionic serve
 
 ## Device Emulation
-To build the iOS app, the following commands are recommended as they will take care of app customization, cordova plugin installation and clearing of previous project caches. 
+To build the iOS app, the following commands are recommended as they will take care of app customization, cordova plugin installation and clearing of previous project caches.
+**Build the app and load it onto an iPhone (requires use and knowledge of XCode)**
 > gulp buildiOS
-
+**Build the app and emulate it on desktop using XCode's emulator**
 > ionic emulate ios
 
 OR
