@@ -43,8 +43,8 @@ angular.module('OBApp', [
       $location.path('/search');
     }
 
-
-    $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
+  //TODO: uncomment this block of code when auth backend implemented
+/*    $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
       if ('data' in next && 'authenticationNeeded' in next.data) {
         if (!authService.isAuthenticated()) {
           if (next.name !== 'login') {
@@ -53,7 +53,7 @@ angular.module('OBApp', [
           }
         }
       }
-    });
+    });*/
 
 
   })

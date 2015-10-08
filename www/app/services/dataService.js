@@ -63,6 +63,12 @@
         $ionicLoading.show({
           template: 'Loading...'
         });
+
+        //TODO: delete these 2 lines when real backend in place
+        $ionicLoading.hide();
+        deferred.resolve(getMockProducts());
+
+/*      //TODO: uncomment this code block when real backend in place
         //TODO: change this url to OB backend
         $http.get(API + '/products')
           .success(function (data, status) {
@@ -76,16 +82,24 @@
             $ionicLoading.hide();
             deferred.reject();
           });
+*/
 
       }
       return deferred.promise;
     }
 
     function getColumns() {
-      var defferred = $q.defer();
+      var deferred = $q.defer();
       $ionicLoading.show({
         template: 'Loading...'
       });
+
+      //TODO: delete these 2 lines when real backend in place
+      $ionicLoading.hide();
+      deferred.resolve(getMockColumns());
+
+/*
+      //TODO: uncomment this code block when real backend in place
       //TODO: change this url to OB backend
       $http.get(API + '/columns')
         .success(function (data, status) {
@@ -96,9 +110,10 @@
         .error(function () {
           console.log('Error while making HTTP call.');
           $ionicLoading.hide();
-          defferred.reject();
+          deferred.reject();
         });
-      return defferred.promise;
+*/
+      return deferred.promise;
     }
 
     function getGroups() {
@@ -106,18 +121,24 @@
       $ionicLoading.show({
         template: 'Loading...'
       });
-      //TODO: change this url to OB backend
-      $http.get(API + '/groups')
-        .success(function (data, status) {
-          console.log("Received groups data via HTTP.", data, status);
-          $ionicLoading.hide();
-          deferred.resolve(data);
-        })
-        .error(function () {
-          console.log('Error while making HTTP call.');
-          $ionicLoading.hide();
-          deferred.reject();
-        });
+
+      //TODO: delete these 2 lines when real backend in place
+      $ionicLoading.hide();
+      deferred.resolve(getMockGroups());
+
+      //TODO: uncomment this code block when real backend in place
+      /*      //TODO: change this url to OB backend
+             $http.get(API + '/groups')
+             .success(function (data, status) {
+             console.log("Received groups data via HTTP.", data, status);
+             $ionicLoading.hide();
+             deferred.resolve(data);
+             })
+             .error(function () {
+             console.log('Error while making HTTP call.');
+             $ionicLoading.hide();
+             deferred.reject();
+             });*/
       return deferred.promise;
     }
 
@@ -136,174 +157,180 @@
 
 })();
 
-/*  THIS MOCK DATA IS NOW BEING RETURNED BY A NODE/EXPRESS BACKEND SET UP JUST TO RETURN THIS DATA
- var groups = [
- {"id": "1", "name": "30 Year Peforming Fixed"},
- {"id": "2", "name": "30 Year FHA"},
- {"id": "3", "name": "15 Year Peforming Fixed"}
- ];
+ // THIS  IS MOCK DATA THAT WILL BE DELETED WHEN REAL BACKEND IS IN PLACE
+ function getMockGroups() {
+   return [
+     {"id": "1", "name": "30 Year Peforming Fixed"},
+     {"id": "2", "name": "30 Year FHA"},
+     {"id": "3", "name": "15 Year Peforming Fixed"}
+   ];
+ }
 
- var columns = [
- {"id": "rate", "name": "Rate"},
- {"id": "points", "name": "Points"},
- {"id": "apr", "name": "APR"},
- {"id": "months", "name": "Term"},
- {"id": "closing", "name": "Closing"},
- {"id": "rebate", "name": "Rebate"}];
+ function getMockColumns(){
+   return [
+     {"id": "rate", "name": "Rate"},
+     {"id": "points", "name": "Points"},
+     {"id": "apr", "name": "APR"},
+     {"id": "months", "name": "Term"},
+     {"id": "closing", "name": "Closing"},
+     {"id": "rebate", "name": "Rebate"}
+   ];
+ }
 
- var products = [
- {
- "groupId": "1",
- "groupName": "30 Year Performing Fixed",
- "id": 1,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "3",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "1",
- "groupName": "30 Year Performing Fixed",
- "id": 2,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "13",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "1",
- "groupName": "30 Year Performing Fixed",
- "id": 3,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "12",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "1",
- "groupName": "30 Year Performing Fixed",
- "id": 4,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "27",
- "months": "360",
- "apr": "3.86 "
- },
- {
- "groupId": "1",
- "groupName": "30 Year Performing Fixed",
- "id": 5,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "9",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "1",
- "groupName": "30 Year Performing Fixed",
- "id": 6,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "12",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "1",
- "groupName": "30 Year Performing Fixed",
- "id": 7,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "13",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "1",
- "groupName": "30 Year Performing Fixed",
- "id": 8,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "11",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "1",
- "groupName": "30 Year Performing Fixed",
- "id": 9,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "29",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "2",
- "groupName": "30 Year FHA",
- "id": 10,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "7",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "2",
- "groupName": "30 Year FHA",
- "id": 11,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "6",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "2",
- "groupName": "30 Year FHA",
- "id": 12,
- "rebate": "$1000",
- "points": "2",
- "rate": "3.500",
- "closing": "18",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "3",
- "groupName": "15 Year Performing Fixed",
- "id": 13,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "16",
- "months": "360",
- "apr": "3.86"
- },
- {
- "groupId": "3",
- "groupName": "15 Year Performing Fixed",
- "id": 14,
- "rebate": "$1000",
- "points": "1",
- "rate": "3.500",
- "closing": "31",
- "months": "360",
- "apr": "3.86"
- }];
- */
+ function getMockProducts() {
+   return [
+     {
+       "groupId": "1",
+       "groupName": "30 Year Performing Fixed",
+       "id": 1,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "3",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "1",
+       "groupName": "30 Year Performing Fixed",
+       "id": 2,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "13",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "1",
+       "groupName": "30 Year Performing Fixed",
+       "id": 3,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "12",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "1",
+       "groupName": "30 Year Performing Fixed",
+       "id": 4,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "27",
+       "months": "360",
+       "apr": "3.86 "
+     },
+     {
+       "groupId": "1",
+       "groupName": "30 Year Performing Fixed",
+       "id": 5,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "9",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "1",
+       "groupName": "30 Year Performing Fixed",
+       "id": 6,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "12",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "1",
+       "groupName": "30 Year Performing Fixed",
+       "id": 7,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "13",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "1",
+       "groupName": "30 Year Performing Fixed",
+       "id": 8,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "11",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "1",
+       "groupName": "30 Year Performing Fixed",
+       "id": 9,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "29",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "2",
+       "groupName": "30 Year FHA",
+       "id": 10,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "7",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "2",
+       "groupName": "30 Year FHA",
+       "id": 11,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "6",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "2",
+       "groupName": "30 Year FHA",
+       "id": 12,
+       "rebate": "$1000",
+       "points": "2",
+       "rate": "3.500",
+       "closing": "18",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "3",
+       "groupName": "15 Year Performing Fixed",
+       "id": 13,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "16",
+       "months": "360",
+       "apr": "3.86"
+     },
+     {
+       "groupId": "3",
+       "groupName": "15 Year Performing Fixed",
+       "id": 14,
+       "rebate": "$1000",
+       "points": "1",
+       "rate": "3.500",
+       "closing": "31",
+       "months": "360",
+       "apr": "3.86"
+     }];
+ }

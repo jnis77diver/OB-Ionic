@@ -13,13 +13,13 @@
         register: register
       };
 
+      //TODO: delete this function when real backend implemented and uncomment code below
       function login(username, password) {
         var deferred = $q.defer();
         deferred.resolve();
 
+        return deferred.promise;
       }
-
-
 
       //TODO: use the login and register functions below when auth backend is implemented
 /*
