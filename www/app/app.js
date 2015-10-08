@@ -7,8 +7,8 @@ angular.module('OBApp', [
   'angular-cache'
 ])
 
-  .run(function($http, $ionicPlatform, CacheFactory, notificationService) {
-    $ionicPlatform.ready(function() {
+  .run(function ($http, $ionicPlatform, CacheFactory, notificationService) {
+    $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -28,7 +28,7 @@ angular.module('OBApp', [
     // for Angular-Cache caching in Local Storage
     // TODO: set a realistic maxAge based on OB requirements
     // TODO: karma throws an error with this uncommented. Figure out how to get around this
-    if(!CacheFactory.get('defaultCache')){
+    if (!CacheFactory.get('defaultCache')) {
       $http.defaults.cache = CacheFactory('defaultCache', {
         storageMode: 'localStorage',
         maxAge: 15 * 60 * 1000, // Items added to this cache expire after 15 minutes
@@ -37,20 +37,27 @@ angular.module('OBApp', [
     }
 
   })
-  .run(function ($rootScope, $state, $ionicHistory, authService) {
-  $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
-    if ('data' in next && 'authenticationNeeded' in next.data) {
-      if (!authService.isAuthenticated()) {
-        if (next.name !== 'login') {
-          event.preventDefault();
-          $state.go('login');
+  .run(function ($rootScope, $state, $ionicHistory, $location, authService) {
+    // re-direct to /search if user refreshes on /results or /recent-seaches
+    if ($location.path() === '/results' || $location.path() === '/recent-searches') {
+      $location.path('/search');
+    }
+
+
+    $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
+      if ('data' in next && 'authenticationNeeded' in next.data) {
+        if (!authService.isAuthenticated()) {
+          if (next.name !== 'login') {
+            event.preventDefault();
+            $state.go('login');
+          }
         }
       }
-    }
+    });
+
+
+  })
+  .run(function ($templateRequest) {
+    $templateRequest('app/emailTemplate/emailTemplate.html');
   });
 
-
-})
-.run(function($templateRequest){
-  $templateRequest('app/emailTemplate/emailTemplate.html');
-});

@@ -103,3 +103,14 @@ In order to release the app using Apple's B2B program, you must do the following
 8. When the app has been approved, the B2B customers will be able to install it on their devices that are logged in using the Volume Purchase Program Apple IDs you provided.
 
 
+#### Yes No Radio button
+```javascript
+{
+   type: "YesNoRadio",
+   key: "Example Yes No Radio Key",
+   templateOptions: {
+       label: 'Radio yes no',
+       required: true
+   }
+}
+```
