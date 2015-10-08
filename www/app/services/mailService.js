@@ -5,9 +5,9 @@
     .module('OBApp')
     .factory('mailService', mailService);
     
-    mailService.$inject = ['_', '$cordovaEmailComposer'];
+    mailService.$inject = ['_', '$cordovaEmailComposer', '$templateCache'];
     
-    function mailService(_, $cordovaEmailComposer){
+    function mailService(_, $cordovaEmailComposer, $templateCache){
       return {
         sendSearchResultsEmail: sendSearchResultsEmail,
         sendMobileUrlEmail: sendMobileUrlEmail,
@@ -15,6 +15,10 @@
       };
       
       function sendSearchResultsEmail(data){
+        if(!data.groups || !data.columns || !data.products){
+          return;
+        }
+        
         var emailTemplate = getResultHtml(data);
 
         $cordovaEmailComposer.isAvailable().then(function() {
@@ -33,12 +37,13 @@
       }
       
       function getResultHtml(data){
+        var template = _.template($templateCache.get('app/emailTemplate/emailTemplate.html'));
         var html = '';
            
         for(var i = 0; i < data.groups.length; i++){
           var title = _.template("<h1><%- name %></h1>");
           html+= title({name: data.groups[i].name});
-          
+
           html += '<table border="1" cellspacing="1" cellpadding="5">';
           html += '<tr>';
           for(var col = 0; col < data.columns.length; col++){
@@ -46,7 +51,7 @@
             html+= cell({colValue: [data.columns[col].name]});
           }
           html += '</tr>';
-          
+
           for(var j = 0; j < data.products[i].products.length; j++){
             html+= '<tr>';
             for(var col = 0; col < data.columns.length; col++){
@@ -54,10 +59,10 @@
               html+= cell({colValue: data.products[i].products[j][data.columns[col].id]});
             }
             html+= '</tr>';
-          }   
+          }
           html += '</table>';
         }
-        return html;
+        return template({resultData: html});
       }
       
       function sendMobileUrlEmail(){

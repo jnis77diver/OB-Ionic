@@ -54,6 +54,15 @@ angular
           }
         }
       })
+      .state('menu.tabs.geolocation', {
+        url: '/location',
+        views: {
+          'location': {
+            templateUrl: 'app/location/geo-location.html',
+            controller: 'GeoLocationCtrl as vm'
+          }
+        }
+      })
       .state('menu.tabs.search', {
         url: '/search',
         views: {

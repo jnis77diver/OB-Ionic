@@ -8,14 +8,17 @@ var path = require('path');
 var paths = require('../paths')();
 var runSequence = require('run-sequence');
 
-//var karma = require('karma').server;
 
 var root = path.join(__dirname, '../../');
 /**
  * Run test once and exit
  */
 gulp.task('test', function (done) {
-  gulp
+  runSequence('karmaInject', 'karmaRun');
+});
+
+gulp.task('karmaInject', function(){
+  var stream = gulp
     .src(paths.karma + 'karma.conf.js')
     .pipe(plumber())
     .pipe(wiredep.stream({
@@ -46,14 +49,16 @@ gulp.task('test', function (done) {
       }))
     .pipe(gulp.dest('./'));
 
+  return stream;
 
+});
+
+gulp.task('karmaRun', function(done){
   new Server({
     configFile: root + '/karma.conf.js',
     singleRun: true
-  }, function () {
-    done();
-  }).start();
-  //karma.start(karmaCommonConf, done);
+  }, done).start();
+
 });
 
 /**
