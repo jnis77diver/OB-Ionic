@@ -1,3 +1,4 @@
+//TODO: determine if register controller and associated view should be removed from app altogether
 (function () {
   'use strict';
 
