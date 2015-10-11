@@ -15,7 +15,10 @@ gulp.task('iosPlatform', shell.task([
 
 // add additional plugins at the end of this list
 gulp.task('addPlugins', shell.task([
-  'cordova plugin add https://github.com/katzer/cordova-plugin-email-composer.git',
+/*  The ng-cordova email-composer plugin has a flaw that causes app to crash if an
+  email account has not been added to iPhone. So, it has been added to the repo
+  so that a new version will not be checked for and installed on each  build */
+  //'cordova plugin add https://github.com/katzer/cordova-plugin-email-composer.git',
   'cordova plugin add https://github.com/phonegap-build/PushPlugin.git',
   'cordova plugin add cordova-plugin-geolocation',
   'cordova plugin add cordova-plugin-dialogs',

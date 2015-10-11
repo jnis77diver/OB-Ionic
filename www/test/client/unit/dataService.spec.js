@@ -22,6 +22,7 @@ describe('dataService', function () {
   describe('http requests', function(){
     beforeEach(function(){
       $httpBackend.whenGET('app/core/tabs.html').respond(200);
+      $httpBackend.whenGET('app/home/tab-home.html').respond(200);
       $httpBackend.whenGET('app/layout/menu-layout.html').respond(200);
       $httpBackend.whenGET('app/register/register.html').respond(200);
       $httpBackend.whenGET('app/login/login.html').respond(200);
@@ -29,6 +30,7 @@ describe('dataService', function () {
 
     });
 
+    //TODO: remove skip when real backend is wired up
     it('getColumns returns a value', function(){
       $httpBackend.when('GET', API + '/columns').respond(200, [{}]);
       dataService.getColumns().then(function(data){

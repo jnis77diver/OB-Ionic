@@ -49,6 +49,8 @@ module.exports = function (config) {
       "www/app/factories/authInterceptor.js",
       "www/app/factories/underscore.js",
       "www/app/home/home-ctrl.js",
+      "www/app/iOS9Patch/angular-ios9-uiwebview.patch.js",
+      "www/app/iOS9Patch/ionRadio.js",
       "www/app/location/geoLocation-ctrl.js",
       "www/app/login/login-ctrl.js",
       "www/app/notifications/notifications-ctrl.js",
