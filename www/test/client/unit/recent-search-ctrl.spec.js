@@ -25,6 +25,7 @@ describe('RecentSearch Controller', function () {
       $httpBackend.whenGET('app/login/login.html').respond(200);
       $httpBackend.whenGET('app/results/tab-search-results.html').respond(200);
       $httpBackend.whenGET('app/emailTemplate/emailTemplate.html').respond(200);
+      $httpBackend.whenGET('app/home/tab-home.html').respond(200);
 
     });
   });

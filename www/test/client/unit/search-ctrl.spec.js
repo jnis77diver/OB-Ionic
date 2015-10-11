@@ -21,6 +21,7 @@ describe('Search Controller', function () {
 
       controller = $controller('SearchCtrl', {});
       $httpBackend.whenGET('app/core/tabs.html').respond(200);
+      $httpBackend.whenGET('app/home/tab-home.html').respond(200);
       $httpBackend.whenGET('app/layout/menu-layout.html').respond(200);
       $httpBackend.whenGET('app/register/register.html').respond(200);
       $httpBackend.whenGET('app/results/tab-search-result-details.html').respond(200);
