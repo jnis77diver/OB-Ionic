@@ -4,7 +4,8 @@ angular.module('OBApp', [
   'ionic',
   'formlyIonic',
   'ngCordova',
-  'angular-cache'
+  'angular-cache',
+  'ngIOS9UIWebViewPatch'
 ])
 
   .run(function ($http, $ionicPlatform, CacheFactory, notificationService) {
